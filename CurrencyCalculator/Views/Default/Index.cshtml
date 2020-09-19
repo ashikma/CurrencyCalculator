@@ -1,5 +1,6 @@
 ﻿@using CurrencyCalculator.Models
 @model List<Currency>
+
 @{
     Layout = null;
 }
@@ -10,6 +11,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <link href="~/Content/Styles/Currency.css" rel="stylesheet" />
 </head>
 <body>
     <div class="wrapper">
@@ -22,7 +24,7 @@
                     <ul class="fields">
                         <li>
                             <label class="fields-lable">From</label>
-                            <select name="From" class="currencyList">
+                            <select name="from" class="currencyList">
                                 @foreach (Currency c in Model)
                                 {
                                     <option value="@c.CurrencyCode"> @c.Country</option>
@@ -39,11 +41,11 @@
                             </select>
                         </li>
                         <li>
-                            <label class="fields-lable">To</label>
+                            <label class="fields-lable">Sum</label>
                             <input type="text" class="sum" name="sum" />
                         </li>
                         <li>
-                           <button class="currencyCalculate">Calculate</button>
+                            <button class="currencyCalculate">Calculate</button>
                         </li>
                     </ul>
 
@@ -52,7 +54,7 @@
 
             </div>
             <aside class="result">
-
+                <img class="result-img" src="~/Content/Images/Cartoon.png" />
             </aside>
         </main>
     </div>

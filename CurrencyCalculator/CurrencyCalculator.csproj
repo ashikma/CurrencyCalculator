@@ -89,11 +89,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\currencies.jpg" />
+    <Content Include="Content\Styles\Currency.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BLL\CurrencyViewModel.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="BLL\CurrensyBLL.cs" />
     <Compile Include="DAL\CurrensyDb.cs" />

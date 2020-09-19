@@ -10,12 +10,30 @@ namespace CurrencyCalculator.Controllers
 {
     public class DefaultController : Controller
     {
+
+        CurrensyBLL currensyBLL;
+        CurrencyViewModel viewModel;
+
+        public DefaultController()
+        {
+            this.currensyBLL = new CurrensyBLL();
+        }
+
         [HttpGet]
         public ActionResult Index()
         {
-            CurrensyBLL currensyBLL = new CurrensyBLL();
-            List<Currency> list = currensyBLL.GetAllCurrencies();
+           
+            List<Currency> list = this.currensyBLL.GetAllCurrencies();
             return View(list);
+        }
+
+        [HttpPost]
+        public ActionResult Calculate(string from, string to, double sum)
+        {
+           
+            double result = this.currensyBLL.Calculate( from,  to,  sum);
+            
+            return View(result);
         }
     }
 }

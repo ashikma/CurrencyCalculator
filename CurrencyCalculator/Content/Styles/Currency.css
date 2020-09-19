@@ -1,0 +1,52 @@
+﻿* { padding:0; margin:0; box-sizing: border-box;}
+
+.wrapper
+{
+    width:800px;
+    margin:20px auto;
+    border: 1px solid #bfb8b8;
+    box-shadow: #ebe8e8 10px 10px 10px;
+}
+.currencyImg
+{
+    width:799px;
+}
+.name
+{
+    display:flex;
+    padding:10px;
+}
+.fields
+{
+    list-style:none;
+}
+.fields li
+{
+    margin: 20px;
+}
+
+.fields-lable 
+{
+    font-size: 20px;
+    width: 120px;
+    display:inline-block;
+}
+.currencyList, .sum, .currencyCalculate {
+    padding: 7px;
+    width: 200px;
+    display: inline-block;
+}
+.currencyCalculate
+{
+   margin-left:125px;
+}
+
+ .result , .result-img {
+        width: 360px;
+        height: 220px;
+    }
+.formBlock
+{
+    margin-right:30px;
+}
+
