@@ -14,8 +14,10 @@ namespace ConsoleApplication
         public int Unit
         {
             get { return this.unit; }
-            set { if (this.unit <= 0)
+            set { if (value>0 )
                     this.unit = value;
+            else
+                    throw new Exception("lkglkflkglklg");
             }
         }
 

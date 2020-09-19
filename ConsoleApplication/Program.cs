@@ -12,6 +12,7 @@ namespace ConsoleApplication
         {
             Currency c = new Currency();
             c.Name = "Dollar";
+            Console.WriteLine("The currency is " + c.Name);
             c.Unit = 0;
         }
     }

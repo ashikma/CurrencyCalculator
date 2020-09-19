@@ -1,0 +1,60 @@
+﻿@using CurrencyCalculator.Models
+@model List<Currency>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <img class="currencyImg" src="~/Content/Images/currencies.jpg" />
+        </header>
+        <main class="name">
+            <div class="formBlock">
+                <form class="form" method="post" action="Default/Calculate">
+                    <ul class="fields">
+                        <li>
+                            <label class="fields-lable">From</label>
+                            <select name="From" class="currencyList">
+                                @foreach (Currency c in Model)
+                                {
+                                    <option value="@c.CurrencyCode"> @c.Country</option>
+                                }
+                            </select>
+                        </li>
+                        <li>
+                            <label class="fields-lable">To</label>
+                            <select name="to" class="currencyList">
+                                @foreach (Currency c in Model)
+                                {
+                                    <option value="@c.CurrencyCode"> @c.Country</option>
+                                }
+                            </select>
+                        </li>
+                        <li>
+                            <label class="fields-lable">To</label>
+                            <input type="text" class="sum" name="sum" />
+                        </li>
+                        <li>
+                           <button class="currencyCalculate">Calculate</button>
+                        </li>
+                    </ul>
+
+
+                </form>
+
+            </div>
+            <aside class="result">
+
+            </aside>
+        </main>
+    </div>
+</body>
+</html>

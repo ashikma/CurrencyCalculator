@@ -8,16 +8,10 @@ namespace CurrencyCalculator.Models
 {
     public class Currency
     {
-        int unit;
-
         public string Name { get; set; }
-        public int Unit
-        {
-            get { return this.unit; }
-            set { if (this.unit <= 0)
-                    this.unit = value;
-            }
-        }
-
+        public int Unit{get;set;}
+        public  string CurrencyCode  { get; set; }
+        public  string Country  { get; set; }
+        public  double Rate  { get; set; }
     }
 }
