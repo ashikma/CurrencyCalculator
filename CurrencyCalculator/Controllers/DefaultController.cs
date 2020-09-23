@@ -12,7 +12,7 @@ namespace CurrencyCalculator.Controllers
     {
 
         CurrensyBLL currensyBLL;
-        CurrencyViewModel viewModel;
+        
 
         public DefaultController()
         {
@@ -23,17 +23,15 @@ namespace CurrencyCalculator.Controllers
         public ActionResult Index()
         {
            
-            List<Currency> list = this.currensyBLL.GetAllCurrencies();
-            return View(list);
+            CurrencyViewModelSimple  cms= this.currensyBLL.GetViewModel();
+            return View(cms);
         }
 
         [HttpPost]
         public ActionResult Calculate(string from, string to, double sum)
         {
-           
-            double result = this.currensyBLL.Calculate( from,  to,  sum);
-            
-            return View(result);
+            CurrencyViewModelFull cmf = this.currensyBLL.GetViewModel(from, to, sum);
+            return View("index", cmf);
         }
     }
 }

@@ -10,26 +10,47 @@ namespace CurrencyCalculator.BLL
     public class CurrensyBLL
     {
         CurrensyDb currensyDb;
+        List<Currency> list;
 
         public CurrensyBLL()
         {
             this.currensyDb = new CurrensyDb();
+            list = this.currensyDb.GetCurrencies();
         }
 
-        public CurrencyViewModel GetViewModel(string from, string to, double sum)
+       public CurrencyViewModelFull GetViewModel(string from, string to, double sum)
         {
-            CurrencyViewModel viewModel = new CurrencyViewModel();
-            viewModel.CurrencyList = GetAllCurrencies();
+            CurrencyViewModelFull viewModel = new CurrencyViewModelFull();
+            viewModel.CurrencyList = this.GetAllCurrencies();
             viewModel.Result = this.Calculate(from, to, sum);
+            viewModel.From = this.GetCarency(from);
+            viewModel.To = this.GetCarency(to);
+            viewModel.Sum = sum;
             return viewModel;
         }
 
-        public List<Currency> GetAllCurrencies()
+        public CurrencyViewModelSimple GetViewModel()
         {
-            return this.currensyDb.GetCurrencies();
+            CurrencyViewModelSimple viewModel = new CurrencyViewModelSimple();
+            viewModel.CurrencyList = this.list;
+            
+            return viewModel;
         }
 
-        public double GetRate(string from)
+        private List<Currency> GetAllCurrencies()
+        {
+            return this.list;
+        }
+        private Currency GetCarency(string from)
+        {
+            foreach(Currency c in this.list)
+            {
+                if (c.CurrencyCode == from)
+                    return c;
+            }
+            return null;
+        }
+        private double GetRate(string from)
         {
             List<Currency> list = GetAllCurrencies();
             foreach(Currency c in list)
@@ -40,7 +61,7 @@ namespace CurrencyCalculator.BLL
             return 0;
         }
 
-        public double Calculate(string from, string to, double sum)
+        private double Calculate(string from, string to, double sum)
         {
             if (sum == 0)
                 return 0;
@@ -52,10 +73,10 @@ namespace CurrencyCalculator.BLL
 
         }
 
-        public int GetUnit(string from)
+        private int GetUnit(string from)
         {
-            List<Currency> list = GetAllCurrencies();
-            foreach (Currency c in list)
+            
+            foreach (Currency c in this.list)
             {
                 if (c.CurrencyCode == from)
                     return c.Unit;
@@ -63,9 +84,5 @@ namespace CurrencyCalculator.BLL
             return 0;
         }
 
-        internal double Calculate(string v1, string from, string v2, string to, double v3, double sum)
-        {
-            throw new NotImplementedException();
-        }
-    }
+       }
 }

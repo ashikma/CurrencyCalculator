@@ -1,6 +1,6 @@
 ﻿@using CurrencyCalculator.Models
-@model List<Currency>
-
+@using CurrencyCalculator.BLL
+@model  CurrencyViewModelSimple
 @{
     Layout = null;
 }
@@ -20,12 +20,12 @@
         </header>
         <main class="name">
             <div class="formBlock">
-                <form class="form" method="post" action="Default/Calculate">
+                <form class="form" method="post" action="/Default/Calculate">
                     <ul class="fields">
                         <li>
                             <label class="fields-lable">From</label>
                             <select name="from" class="currencyList">
-                                @foreach (Currency c in Model)
+                                @foreach (Currency c in Model.CurrencyList)
                                 {
                                     <option value="@c.CurrencyCode"> @c.Country</option>
                                 }
@@ -34,7 +34,7 @@
                         <li>
                             <label class="fields-lable">To</label>
                             <select name="to" class="currencyList">
-                                @foreach (Currency c in Model)
+                                @foreach (Currency c in Model.CurrencyList)
                                 {
                                     <option value="@c.CurrencyCode"> @c.Country</option>
                                 }
@@ -54,7 +54,18 @@
 
             </div>
             <aside class="result">
-                <img class="result-img" src="~/Content/Images/Cartoon.png" />
+                @if (Model is CurrencyViewModelFull)
+                {
+                    CurrencyViewModelFull cmf = Model as CurrencyViewModelFull;
+                <span class="result">@cmf.Sum @cmf.From.CurrencyCode of   @cmf.From.Country = 
+                               @Math.Round(cmf.Result, 2)
+                               @cmf.To.CurrencyCode  of @cmf.To.Country   </span>
+                }
+                else
+                {
+                    <img class="result-img" src="~/Content/Images/Cartoon.png" />
+
+                }
             </aside>
         </main>
     </div>
