@@ -96,12 +96,15 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BLL\CurrencyViewModel.cs" />
+    <Compile Include="BLL\LoginBLL.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="BLL\CurrensyBLL.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="DAL\CurrensyDb.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BaseUser.cs" />
     <Compile Include="Models\Currency.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -109,6 +112,7 @@
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
     <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

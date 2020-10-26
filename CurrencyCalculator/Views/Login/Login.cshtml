@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <div class="wrapper"> 
+        <form action="~/Login/CheckLogin" method="post">
+            @if (ViewBag.Error != null)
+            {
+                <span class="error">Name or password is not correct</span>
+            }
+            else if (ViewBag.Trick != null)
+            {
+                <span class="error">This is not good to do some tricks</span>
+
+            }
+            <ul class="fields">
+                <li class="fields-row">
+                    <label>User Name</label>
+                    <input type="text" name="NickName" />
+                </li>
+                <li class="fields-row">
+                    <label>Password</label>
+                    <input type="password" name="Password" />
+                </li>
+                <li class="fields-row">
+                    <button type="submit">Login</button>
+                </li>
+            </ul>
+        </form>
+    </div>
+</body>
+</html>

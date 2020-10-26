@@ -22,9 +22,16 @@ namespace CurrencyCalculator.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-           
+           if(Session["user"]!=null)
+            {
             CurrencyViewModelSimple  cms= this.currensyBLL.GetViewModel();
             return View(cms);
+            }
+           else
+            {
+                TempData["trick"] = true;
+                return RedirectToAction("login", "login");
+            }
         }
 
         [HttpPost]
